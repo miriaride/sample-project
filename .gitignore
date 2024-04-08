@@ -1,6 +1,6 @@
 # デフォルトの無視対象ファイル
 /shelf/
-/workspace.xml
+/.idea/workspace.xml
 
 # OS files
 .DS_Store
@@ -42,9 +42,6 @@ libs/
 # Gradle files
 .gradle/
 .m2/
-
-# BlueJ files
-*.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

@@ -42,6 +42,7 @@ libs/
 # Gradle files
 .gradle/
 .m2/
+/gradle/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

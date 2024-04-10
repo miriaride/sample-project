@@ -18,6 +18,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -26,6 +27,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Main extends JavaPlugin implements Listener {
 
   private int count; // 基本型int は初期値が0 この指定ではプレイヤー単位ではなくワールド単位でカウントが共通
+
 
   @Override
   public void onEnable() {
@@ -97,6 +99,17 @@ public final class Main extends JavaPlugin implements Listener {
     player.getInventory().setContents(itemStack);
 
 
+  }
+
+  @EventHandler
+  // プレイヤーが参加した際にメッセージを表示するプログラム
+  public void onPlayerJoinEvent(PlayerJoinEvent e) {
+    // プレイヤーの情報を取得
+    Player player = e.getPlayer();
+    // プレイヤーの表示名を取得
+    String playerName = player.getDisplayName();
+    // プレイヤーが参加した際に送るメッセージを設定
+    e.setJoinMessage(playerName + "さん、マイクラの世界へようこそ!");
   }
 }
 

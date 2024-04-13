@@ -32,7 +32,8 @@ public final class Main extends JavaPlugin implements Listener {
   @Override
   public void onEnable() {
     Bukkit.getPluginManager().registerEvents(this, this);
-
+    getCommand("maxhealthchange").setExecutor(new MaxHealthChangeCommand());
+    getCommand("levelup").setExecutor(new LevelUpCommand());
   }
 
   /**
@@ -72,12 +73,12 @@ public final class Main extends JavaPlugin implements Listener {
             .withFlicker()
             .build());
         fireworkMeta.setPower(1);
-
         // 追加した情報で再設定する。
         firework.setFireworkMeta(fireworkMeta);
         Path path = Path.of("firework.txt");
         Files.writeString(path, "たーまや！！", StandardOpenOption.APPEND);
         player.sendMessage(Files.readString(path));
+
       }
     }
     // BigInteger側の val に対してnextProbablePrimeメソッドを使用
@@ -111,6 +112,7 @@ public final class Main extends JavaPlugin implements Listener {
     // プレイヤーが参加した際に送るメッセージを設定
     e.setJoinMessage(playerName + "さん、マイクラの世界へようこそ!");
   }
+
 }
 
 

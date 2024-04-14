@@ -33,7 +33,7 @@ public final class Main extends JavaPlugin implements Listener {
   public void onEnable() {
     Bukkit.getPluginManager().registerEvents(this, this);
     getCommand("maxhealthchange").setExecutor(new MaxHealthChangeCommand());
-    getCommand("levelup").setExecutor(new LevelUpCommand());
+    getCommand("setlevel").setExecutor(new SetLevelCommand());
   }
 
   /**

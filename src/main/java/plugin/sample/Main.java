@@ -2,9 +2,6 @@ package plugin.sample;
 
 import java.io.IOException;
 import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -32,7 +29,10 @@ public final class Main extends JavaPlugin implements Listener {
   @Override
   public void onEnable() {
     Bukkit.getPluginManager().registerEvents(this, this);
-
+    getCommand("changeMaxHealth").setExecutor(new ChangeMaxHealthCommand());
+    getCommand("setLevel").setExecutor(new SetLevelCommand());
+    getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
+    getCommand("allChangeMaxHealth").setExecutor(new AllChangeMaxHealthCommand());
   }
 
   /**
@@ -72,20 +72,12 @@ public final class Main extends JavaPlugin implements Listener {
             .withFlicker()
             .build());
         fireworkMeta.setPower(1);
-
-        // 追加した情報で再設定する。
-        firework.setFireworkMeta(fireworkMeta);
-        Path path = Path.of("firework.txt");
-        Files.writeString(path, "たーまや！！", StandardOpenOption.APPEND);
-        player.sendMessage(Files.readString(path));
       }
     }
     // BigInteger側の val に対してnextProbablePrimeメソッドを使用
     System.out.println("次の素数は " + val.nextProbablePrime()); // 1より大きい素数の２が出力されます。
     System.out.println("====================================");
     count++;
-
-
   }
 
   @EventHandler
@@ -97,8 +89,6 @@ public final class Main extends JavaPlugin implements Listener {
       .forEach(item -> item.setAmount(64));
 
     player.getInventory().setContents(itemStack);
-
-
   }
 
   @EventHandler

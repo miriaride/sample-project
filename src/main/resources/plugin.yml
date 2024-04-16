@@ -2,3 +2,8 @@ name: plugin-sample
 version: '${version}'
 main: plugin.sample.Main
 api-version: '1.20'
+commands:
+  changeMaxHealth:
+  allChangeMaxHealth:
+  setLevel:
+  allSetLevel:

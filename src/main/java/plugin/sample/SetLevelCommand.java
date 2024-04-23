@@ -7,6 +7,13 @@ import org.bukkit.entity.Player;
 
 public class SetLevelCommand implements CommandExecutor {
 
+  private Main main;
+
+  public SetLevelCommand(Main main) {
+    this.main = main;
+  }
+
+
   @Override
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if (sender instanceof Player player) {
@@ -15,7 +22,7 @@ public class SetLevelCommand implements CommandExecutor {
       } else if (args.length > 1) {
         player.sendMessage("セットできるレベルの値は１つだけですよー");
       } else {
-        player.sendMessage("セットするレベルの値が必要ですよー");
+        player.sendMessage(main.getConfig().getString("Message"));
       }
     }
     return false;

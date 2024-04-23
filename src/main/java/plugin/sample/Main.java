@@ -28,9 +28,12 @@ public final class Main extends JavaPlugin implements Listener {
 
   @Override
   public void onEnable() {
+    saveDefaultConfig();
+    getConfig().getString("Message");
+
     Bukkit.getPluginManager().registerEvents(this, this);
     getCommand("changeMaxHealth").setExecutor(new ChangeMaxHealthCommand());
-    getCommand("setLevel").setExecutor(new SetLevelCommand());
+    getCommand("setLevel").setExecutor(new SetLevelCommand(this));
     getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     getCommand("allChangeMaxHealth").setExecutor(new AllChangeMaxHealthCommand());
   }
